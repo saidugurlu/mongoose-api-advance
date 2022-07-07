@@ -6,7 +6,14 @@ const bookSchema = new mongoose.Schema({
 	numberOfPages: Number,
 	language: String,
 	imageUrl: String,
-	buyUrl: String
+	buyUrl: String,
+	whenPurchased: Date,
+relatedBook: mongoose.SchemaTypes.ObjectId,
+topics: [String],
+author: {
+    firstName: String,
+    lastName: String
+}
 });
 
 export const Book = mongoose.model('book', bookSchema);

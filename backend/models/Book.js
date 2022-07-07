@@ -8,8 +8,15 @@ const authorSchema = new mongoose.Schema({
 		type: String,
 		lowercase: true,
 		trim: true,
+		validate: {
+			validator: function (v) {
+				return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+			},
+			message: 'Please enter a valid email',
+		},
 	},
 });
+
 // olusturdugumuz her schema nin kendine ait otomatik bir id si olur.
 const bookSchema = new mongoose.Schema({
 	title: {
@@ -25,7 +32,7 @@ const bookSchema = new mongoose.Schema({
 		trim: true,
 		min: 10,
 		max: 2000,
-		required: true
+		required: true,
 	},
 	language: String,
 	imageUrl: String,

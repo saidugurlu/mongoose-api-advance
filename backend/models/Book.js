@@ -14,6 +14,8 @@ const bookSchema = new mongoose.Schema({
 	title: {
 		type: String,
 		required: true,
+		minLength: 2,
+		maxLength: 255
 	},
 	description: String,
 	numberOfPages: {

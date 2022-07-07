@@ -4,7 +4,10 @@ const authorSchema = new mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	url: String,
-	email: String,
+	email: {
+		type: String,
+		lowercase: true
+	}
 });
 // olusturdugumuz her schema nin kendine ait otomatik bir id si olur.
 const bookSchema = new mongoose.Schema({

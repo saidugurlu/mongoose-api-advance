@@ -21,12 +21,16 @@ app.get('/', (req, res) => {
 });
 
 app.post('/book', async (req, res) => {
-    const book = new Book(req.body);
-    await book.save();
-    res.status(200).json({
-        message: 'book created',
-        book
-    });
+	try {
+		const book = new Book(req.body);
+		await book.save();
+		res.status(200).json({
+			message: 'book created',
+			book,
+		});
+	} catch (err) {
+		res.status(400).json({ error: err.message });
+	}
 });
 
 app.get('/book', async (req, res) => {

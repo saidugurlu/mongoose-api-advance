@@ -6,14 +6,14 @@ const authorSchema = new mongoose.Schema({
 	url: String,
 	email: {
 		type: String,
-		lowercase: true
-	}
+		lowercase: true,
+	},
 });
 // olusturdugumuz her schema nin kendine ait otomatik bir id si olur.
 const bookSchema = new mongoose.Schema({
 	title: {
 		type: String,
-		required: true
+		required: true,
 	},
 	description: String,
 	numberOfPages: Number,
@@ -21,6 +21,10 @@ const bookSchema = new mongoose.Schema({
 	imageUrl: String,
 	buyUrl: String,
 	whenPurchased: Date,
+	whenCreated: {
+		type: Date,
+		default: () => Date.now(),
+	},
 	relatedBook: mongoose.SchemaTypes.ObjectId,
 	topics: [String],
 	author: authorSchema,

@@ -8,7 +8,10 @@ const authorSchema = new mongoose.Schema({
 });
 // olusturdugumuz her schema nin kendine ait otomatik bir id si olur.
 const bookSchema = new mongoose.Schema({
-	title: String,
+	title: {
+		type: String,
+		required: true
+	},
 	description: String,
 	numberOfPages: Number,
 	language: String,

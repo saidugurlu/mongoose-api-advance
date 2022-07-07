@@ -35,7 +35,7 @@ app.post('/book', async (req, res) => {
 
 app.get('/books-by-language/:language', async (req, res) => {
     const language = req.params.language;
-    const books = await Book.where('language').equals(language).sort('title');
+    const books = await Book.where('language').equals(language).sort('title').populate('relatedBook');
     res.status(200).json({
         message: `fetched all books written in ${language}`,
         books,

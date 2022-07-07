@@ -50,7 +50,10 @@ const bookSchema = new mongoose.Schema({
 		type: Date,
 		default: () => Date.now(),
 	},
-	relatedBook: mongoose.SchemaTypes.ObjectId,
+	relatedBook: {
+		type: mongoose.SchemaTypes.ObjectId,
+		ref: 'book'
+	},
 	topics: [String],
 	author: authorSchema,
 });

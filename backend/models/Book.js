@@ -7,6 +7,7 @@ const authorSchema = new mongoose.Schema({
 	email: {
 		type: String,
 		lowercase: true,
+		trim: true,
 	},
 });
 // olusturdugumuz her schema nin kendine ait otomatik bir id si olur.
@@ -15,11 +16,13 @@ const bookSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		minLength: 2,
-		maxLength: 255
+		maxLength: 255,
+		trim: true,
 	},
 	description: String,
 	numberOfPages: {
 		type: Number,
+		trim: true,
 		min: 10,
 		max: 2000,
 		required: true

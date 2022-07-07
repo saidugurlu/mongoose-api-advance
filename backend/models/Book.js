@@ -8,12 +8,20 @@ const authorSchema = new mongoose.Schema({
 		type: String,
 		lowercase: true,
 		trim: true,
-		validate: {
-			validator: function (v) {
-				return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+		validate: [
+			{
+				validator: function (v) {
+					return v.toLowerCase() === v;
+				},
+				message: 'Email must be lowercase.',
 			},
-			message: 'Please enter a valid email',
-		},
+			{
+				validator: function (v) {
+					return /^\S+@\S+\.\S+$/.test(v);
+				},
+				message: 'Please enter a valid email.',
+			},
+		],
 	},
 });
 
